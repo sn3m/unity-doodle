@@ -6,6 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public LevelManager levelManager;
     public GameObject pauseMenu;
+    public Transform player;
 
     private bool _paused = false;
     public float Score { get; set; }
@@ -33,6 +34,12 @@ public class GameManager : MonoBehaviour
         if(!_paused)
         {
             Score += levelManager.speed * Time.deltaTime;
+        }
+
+        if(player.position.y < -1)
+        {
+            Debug.Log("Game Over");
+            // TODO go to gameover menu
         }
     }
 
