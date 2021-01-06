@@ -6,15 +6,27 @@ public class LevelManager : MonoBehaviour
 {
     public Transform player;
     public GameObject sectionPrefab;
-    public int sectionGap = 10;
+    public float sectionGap = 10f;
+    public float platformGap = 10f;
     public int numSections = 10;
     public float speed = 4.4f;
 
-    private LinkedList<GameObject> sections;
+    private readonly LinkedList<GameObject> sections = new LinkedList<GameObject>();
+
+    public GameObject GetLastSection()
+    {
+        if (sections.Count>0)
+        {
+            return sections.Last.Value;
+        } else
+        {
+            return null;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        sections = new LinkedList<GameObject>();
         for(int i=0; i< numSections; i++)
         {
             AddNewSection();
@@ -33,13 +45,23 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public bool IsStartSection()
+    {
+        return sections.Count < 2;
+    }
+
     void AddNewSection()
     {
         GameObject newSection;
         if (sections.Count>0)
         {
-            float lastZ = sections.Last.Value.transform.position.z;
-            newSection = Instantiate(sectionPrefab, new Vector3(0, 0, lastZ + sectionGap), Quaternion.identity);
+            Vector3 lastPosition = sections.Last.Value.transform.position;
+            float x = 0;
+            if(sections.Count > 1)
+            {
+                x = Random.Range(x - platformGap / 3, x + platformGap / 3);
+            }
+            newSection = Instantiate(sectionPrefab, new Vector3(x, 0, lastPosition.z + sectionGap), Quaternion.identity);
         } else
         {
             newSection = Instantiate(sectionPrefab, new Vector3(0, 0, 0), Quaternion.identity);

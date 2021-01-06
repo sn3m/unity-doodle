@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50122a9726775ae44b4d2d5600a3873c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelManager: {fileID: 1159741621930192095, guid: f373ad9eb8881e04fa56d63316f6dfd2,
-    type: 3}
   platformPrefab: {fileID: 5280456472670619632, guid: 960ee09e24c3cf24eb2b3572b45c5ac9,
     type: 3}
+  platformSpread: 12
+  isSingle: 1
