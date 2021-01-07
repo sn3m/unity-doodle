@@ -11,12 +11,14 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     private bool _paused = false;
+    private float defaultTimeScale = 1.3f;
     private float timeScale;
     public float Score { get; set; }
     private bool gameHasEnded = false;
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = defaultTimeScale;
         timeScale = Time.timeScale;
         Score = 0f;
     }
@@ -78,6 +80,7 @@ public class GameManager : MonoBehaviour
 
     public void GoToMainMenu()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("MainMenuScene");
     }
 }
