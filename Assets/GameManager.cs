@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
         Time.timeScale = timeScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        pauseMenu.transform.Find("Panel/PauseMenu").gameObject.SetActive(true);
+        pauseMenu.transform.Find("Panel/OptionsMenu").gameObject.SetActive(false);
         pauseMenu.SetActive(false);
         _paused = false;
     }
