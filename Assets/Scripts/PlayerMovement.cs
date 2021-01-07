@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal") * sidewaysForce;
-        float vertical = Input.GetAxisRaw("Vertical") * sidewaysForce/8;
+        float vertical = Input.GetAxisRaw("Vertical") * sidewaysForce/6;
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
 
         // Limit max speed
