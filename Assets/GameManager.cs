@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     private bool _paused = false;
+    private bool allowPauseScreen = true;
     private float defaultTimeScale = 1.3f;
     private float timeScale;
     public float Score { get; set; }
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause") && allowPauseScreen)
         {
             if (!_paused && Time.timeScale > 0.5f)
             {
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 _paused = true;
+                allowPauseScreen = false;
                 gameOverMenu.SetActive(true);
             }
         }
