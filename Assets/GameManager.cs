@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public LevelManager levelManager;
     public GameObject pauseMenu;
+    public GameObject gameOverMenu;
     public Transform player;
 
     private bool _paused = false;
     public float Score { get; set; }
+    private bool gameHasEnded = false;
     // Start is called before the first frame update
     void Start()
     {
         Score = 0f;
+        Time.timeScale = 1;
     }
 
     // Update is called once per frame
@@ -38,8 +42,13 @@ public class GameManager : MonoBehaviour
 
         if(player.position.y < -1)
         {
-            Debug.Log("Game Over");
-            // TODO go to gameover menu
+            if(gameHasEnded == false) {
+                gameHasEnded = true;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                _paused = true;
+                gameOverMenu.SetActive(true);
+            }
         }
     }
 
@@ -59,5 +68,15 @@ public class GameManager : MonoBehaviour
         Cursor.visible = false;
         pauseMenu.SetActive(false);
         _paused = false;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
     }
 }
