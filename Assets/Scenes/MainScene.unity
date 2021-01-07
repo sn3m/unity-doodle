@@ -309,6 +309,7 @@ MonoBehaviour:
   levelManager: {fileID: 1159741621930192095, guid: f373ad9eb8881e04fa56d63316f6dfd2,
     type: 3}
   pauseMenu: {fileID: 655840498}
+  player: {fileID: 1890940622}
 --- !u!4 &361130878
 Transform:
   m_ObjectHideFlags: 0
@@ -854,7 +855,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 1890940618}
   jumpForce: 11
-  sidewaysForce: 1000
+  sidewaysForce: 800
   maxSpeed: 2
 --- !u!54 &1890940618
 Rigidbody:
@@ -1094,8 +1095,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1159741621930192095, guid: f373ad9eb8881e04fa56d63316f6dfd2,
         type: 3}
+      propertyPath: speed
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159741621930192095, guid: f373ad9eb8881e04fa56d63316f6dfd2,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1890940622}
+    - target: {fileID: 1159741621930192095, guid: f373ad9eb8881e04fa56d63316f6dfd2,
+        type: 3}
+      propertyPath: sectionGap
+      value: 11
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f373ad9eb8881e04fa56d63316f6dfd2, type: 3}

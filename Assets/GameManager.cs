@@ -9,10 +9,12 @@ public class GameManager : MonoBehaviour
     public Transform player;
 
     private bool _paused = false;
+    private float timeScale;
     public float Score { get; set; }
     // Start is called before the first frame update
     void Start()
     {
+        timeScale = Time.timeScale;
         Score = 0f;
     }
 
@@ -54,7 +56,7 @@ public class GameManager : MonoBehaviour
 
     public void Unpause()
     {
-        Time.timeScale = 1;
+        Time.timeScale = timeScale;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         pauseMenu.SetActive(false);
