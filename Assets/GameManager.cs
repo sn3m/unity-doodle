@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
             Score += levelManager.speed * Time.deltaTime;
         }
 
-        if(player.position.y < -1)
+        if(player.position.y < -2)
         {
             if(gameHasEnded == false) {
                 gameHasEnded = true;

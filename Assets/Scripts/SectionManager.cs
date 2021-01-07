@@ -8,6 +8,7 @@ public class SectionManager : MonoBehaviour
 
     private LevelManager levelManager;
     public bool isSingle = true;
+    public bool isStarting = false;
     private float singleRatio = 0.5f;
 
     // Start is called before the first frame update
@@ -17,8 +18,8 @@ public class SectionManager : MonoBehaviour
         // Don't offset position for first couple of sections
         if (levelManager.IsStartSection()) {
             isSingle = true;
-            GameObject newPlatform = Instantiate(platformPrefab, transform.position, Quaternion.identity);
-            newPlatform.transform.parent = transform;
+            isStarting = true;
+            Instantiate(platformPrefab, transform.position, Quaternion.identity, transform);
         } else
         {
             GameObject prevSection = levelManager.GetLastSection();
@@ -34,19 +35,15 @@ public class SectionManager : MonoBehaviour
             }
 
             isSingle = Random.Range(0f, 1f) < singleRatio;
-            Debug.Log(isSingle);
             if(isSingle)
             {
-                GameObject newPlatform = Instantiate(platformPrefab, GetRandomPosition(transform.position), Quaternion.identity);
-                newPlatform.transform.parent = transform;
+                Instantiate(platformPrefab, GetRandomPosition(transform.position), Quaternion.identity, transform);
             } else
             {
                 Vector3 position1 = GetRandomPosition(new Vector3(transform.position.x - levelManager.platformGap / 2, transform.position.y, transform.position.z));
                 Vector3 position2 = GetRandomPosition(new Vector3(transform.position.x + levelManager.platformGap / 2, transform.position.y, transform.position.z));
-                GameObject newPlatform1 = Instantiate(platformPrefab, position1, Quaternion.identity);
-                GameObject newPlatform2 = Instantiate(platformPrefab, position2, Quaternion.identity);
-                newPlatform1.transform.parent = transform;
-                newPlatform2.transform.parent = transform;
+                Instantiate(platformPrefab, position1, Quaternion.identity, transform);
+                Instantiate(platformPrefab, position2, Quaternion.identity, transform);
             }
 
                 
@@ -64,7 +61,7 @@ public class SectionManager : MonoBehaviour
     Vector3 GetRandomPosition(Vector3 startPos)
     {
         float x = Random.Range(-levelManager.platformGap / 4, levelManager.platformGap / 4);
-        float y = Random.Range(-1f, 1.5f);
+        float y = Random.Range(-1.5f, 2f);
         float z = Random.Range(-levelManager.sectionGap / 4, levelManager.sectionGap / 4);
 
         return new Vector3(startPos.x + x, startPos.y + y, startPos.z + z);
