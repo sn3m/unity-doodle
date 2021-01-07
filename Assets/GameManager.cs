@@ -77,12 +77,14 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void GoToMainMenu()
     {
         Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene("MainMenuScene");
     }
 }
