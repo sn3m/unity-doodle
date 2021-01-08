@@ -12,6 +12,7 @@ public class PlayerCollision : MonoBehaviour
             Vector3 normal = collision.GetContact(0).normal;
             if (normal.y > 0)
             {
+                SoundManager.PlaySound("jump");
                 movement.Jump();
             }
         }
@@ -29,6 +30,8 @@ public class PlayerCollision : MonoBehaviour
             // Display floating text
             GameObject floatingText = Instantiate(textPrefab, other.transform.position, Quaternion.identity);
             floatingText.GetComponent<TextMesh>().text = "+" + addScore.ToString("0");
+            // Play sound
+            SoundManager.PlaySound("coin");
         }
     }
 }
