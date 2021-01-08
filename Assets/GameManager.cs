@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         if(!_paused)
         {
-            Score += levelManager.speed * Time.deltaTime;
+            Score += LevelManager.Speed * Time.deltaTime;
         }
 
         if(player.position.y < -2)

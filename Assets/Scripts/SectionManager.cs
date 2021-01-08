@@ -5,11 +5,13 @@ using UnityEngine;
 public class SectionManager : MonoBehaviour
 {
     public GameObject platformPrefab;
+    public GameObject movingPrefab;
 
     private LevelManager levelManager;
     public bool isSingle = true;
     public bool isStarting = false;
     private float singleRatio = 0.5f;
+    private readonly float movingRatio = 0.1f;
 
     // Start is called before the first frame update
     void Awake()
@@ -24,7 +26,7 @@ public class SectionManager : MonoBehaviour
         {
             GameObject prevSection = levelManager.GetLastSection();
             bool isPrevSingle = prevSection.GetComponent<SectionManager>().isSingle;
-
+            bool isMoving = Random.Range(0f, 1f) < movingRatio;
             // Set platform count ratio based on previous section
             if (isPrevSingle)
             {
@@ -35,7 +37,11 @@ public class SectionManager : MonoBehaviour
             }
 
             isSingle = Random.Range(0f, 1f) < singleRatio;
-            if(isSingle)
+            if(isMoving)
+            {
+                Instantiate(movingPrefab, GetRandomPosition(transform.position), Quaternion.identity, transform);
+            }
+            else if(isSingle)
             {
                 Instantiate(platformPrefab, GetRandomPosition(transform.position), Quaternion.identity, transform);
             } else
@@ -55,7 +61,7 @@ public class SectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (-levelManager.speed * Time.deltaTime));
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (-LevelManager.Speed * Time.deltaTime));
     }
 
     Vector3 GetRandomPosition(Vector3 startPos)

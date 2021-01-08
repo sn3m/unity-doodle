@@ -45,5 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   platformPrefab: {fileID: 5280456472670619632, guid: 960ee09e24c3cf24eb2b3572b45c5ac9,
     type: 3}
-  platformSpread: 12
+  movingPrefab: {fileID: 4631538629299654617, guid: f3c07153a24e7134ca5dcf279d6d02c6,
+    type: 3}
   isSingle: 1
+  isStarting: 0

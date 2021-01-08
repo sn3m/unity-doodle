@@ -9,7 +9,7 @@ public class LevelManager : MonoBehaviour
     public float sectionGap = 10f;
     public float platformGap = 10f;
     public int numSections = 10;
-    public float speed = 4.4f;
+    public static float Speed { get; set;}
 
     private readonly LinkedList<GameObject> sections = new LinkedList<GameObject>();
 
@@ -27,6 +27,7 @@ public class LevelManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Speed = 4.4f;
         for(int i=0; i< numSections; i++)
         {
             AddNewSection();
