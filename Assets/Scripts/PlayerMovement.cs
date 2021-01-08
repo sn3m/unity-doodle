@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Add force
-        rb.AddForce(move.x * Time.deltaTime, 0, move.z * Time.deltaTime);
+        rb.AddForce(-move.x * Time.deltaTime, 0, move.y * Time.deltaTime);
     }
 
     public void Jump()
