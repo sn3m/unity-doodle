@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public static AudioClip jump, coin;
+    public static AudioClip jump, bounce, coin;
     static AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
         GetStartAudioState();
         jump = Resources.Load<AudioClip>("jump");
+        bounce = Resources.Load<AudioClip>("trampoline");
         coin = Resources.Load<AudioClip>("coin");
         audioSource = GetComponent<AudioSource>();
     }
@@ -20,6 +21,9 @@ public class SoundManager : MonoBehaviour
         switch(clip) {
             case "jump":
                 audioSource.PlayOneShot(jump, 0.6f);
+                break;
+            case "bounce":
+                audioSource.PlayOneShot(bounce, 0.6f);
                 break;
             case "coin":
                 audioSource.PlayOneShot(coin, 0.1f);

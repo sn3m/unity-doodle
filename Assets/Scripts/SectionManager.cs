@@ -55,7 +55,7 @@ public class SectionManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (-levelManager.speed * Time.deltaTime));
+        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (-LevelManager.Speed * Time.deltaTime));
     }
 
     Vector3 GetRandomPosition(Vector3 startPos)

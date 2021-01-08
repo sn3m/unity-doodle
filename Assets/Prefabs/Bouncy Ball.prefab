@@ -106,5 +106,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc4cb0dab0d2444f89a59ffe3342db7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultipyler: 1.5
+  forceMultipyler: 2
   offset: {x: 0.2, y: 0.75, z: -0.15}
