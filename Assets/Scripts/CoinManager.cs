@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CoinManager : MonoBehaviour
 {
-    public readonly float coinScore = 50f;
+    public float coinScore = 50f;
     public float rotationSpeed;
     public Vector3 offset;
 

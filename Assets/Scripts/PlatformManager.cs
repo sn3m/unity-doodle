@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlatformManager : MonoBehaviour
 {
     public GameObject coinPrefab;
+    public GameObject bouncyPrefab;
     public float coinRate;
+    public float bouncyRate;
     public float smallRate;
     // Start is called before the first frame update
     void Start()
@@ -20,13 +22,19 @@ public class PlatformManager : MonoBehaviour
             transform.localScale = new Vector3(4, 5, 4);
         }
 
-        // Try to add coin
+        // Try to add coin and powerup
         if(!GetComponentInParent<SectionManager>().isStarting)
         {
-            if(Random.Range(0f, 1f) < coinRate)
+            var random = Random.Range(0f, 1f);
+            if (random < coinRate)
             {
                 GameObject newCoin = Instantiate(coinPrefab, transform.position, coinPrefab.transform.rotation);
                 newCoin.transform.parent = transform;
+            }
+            if(random < bouncyRate)
+            {
+                GameObject newBouncy = Instantiate(bouncyPrefab, transform.position, Quaternion.identity);
+                newBouncy.transform.parent = transform;
             }
             
         }

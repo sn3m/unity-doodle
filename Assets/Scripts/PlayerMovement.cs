@@ -26,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(move.x * Time.deltaTime, 0, move.z * Time.deltaTime);
     }
 
-    public void Jump()
+    public void Jump(float forceMultiplyer=1f)
     {
-        rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z);
+        rb.velocity = new Vector3(rb.velocity.x, jumpForce*forceMultiplyer, rb.velocity.z);
     }
 }

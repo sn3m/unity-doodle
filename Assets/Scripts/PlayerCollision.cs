@@ -15,6 +15,9 @@ public class PlayerCollision : MonoBehaviour
                 SoundManager.PlaySound("jump");
                 movement.Jump();
             }
+        } else if(collision.collider.CompareTag("Bouncy"))
+        {
+            movement.Jump(collision.collider.GetComponent<BouncyManager>().forceMultipyler);
         }
     }
     private void OnTriggerEnter(Collider other)
