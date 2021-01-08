@@ -46,6 +46,7 @@ MonoBehaviour:
   player: {fileID: 0}
   sectionPrefab: {fileID: 203783368265892297, guid: c7fc6e2f4581ffa45b0d634bf563934c,
     type: 3}
-  sectionGap: 10
+  sectionGap: 11
+  platformGap: 11
   numSections: 10
   speed: 4.4
